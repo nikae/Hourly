@@ -39,16 +39,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         
         viewShape(view: clockInBtn)
-        viewShedow(view: clockInBtn)
+       // viewShedow(view: clockInBtn)
         
         viewShape(view: clockOutBtn)
-        viewShedow(view: clockOutBtn)
+        //viewShedow(view: clockOutBtn)
         
         viewShape(view: manuallyButn)
-        viewShedow(view: manuallyButn)
+       // viewShedow(view: manuallyButn)
+        
+        viewShape(view: addNewJobBtn)
     
         viewShedow(view: headerView)
         viewShedow(view: overalView)
+        
+        addNewJobBtn.isHighlighted = true
+        clockInBtn.isHighlighted = true
+        clockOutBtn.isHighlighted = true
+        manuallyButn.isHighlighted = true
         
         let date = Date()
         let formatter = DateFormatter()
@@ -56,8 +63,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let result = formatter.string(from: date)
         
         todaysDateLabel.text = result
-
-        
         
     }
 
@@ -134,7 +139,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let oKAction = UIAlertAction(title: "OK", style: .default) {
             (action: UIAlertAction) in
            self.clockInBtn.isEnabled = false
-            self.clockInBtn.backgroundColor = myGreen.withAlphaComponent(0.5)
+            self.clockInBtn.backgroundColor = UIColor.white.withAlphaComponent(0.3)
             self.timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ViewController.updateTime), userInfo: nil, repeats: true)
             self.zeroTime = NSDate.timeIntervalSinceReferenceDate
             //self.timeLabel.text = "00:00:00"
@@ -153,7 +158,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let oKAction = UIAlertAction(title: "OK", style: .default) {
             (action: UIAlertAction) in
             self.clockInBtn.isEnabled = true
-            self.clockInBtn.backgroundColor = myGreen.withAlphaComponent(1)
+            self.clockInBtn.backgroundColor = myGreen
             self.timer.invalidate()
             self.timerLabel.text = "00:00:00"
         }
